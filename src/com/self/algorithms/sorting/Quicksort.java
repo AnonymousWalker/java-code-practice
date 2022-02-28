@@ -2,7 +2,9 @@ package com.self.algorithms.sorting;
 
 public class Quicksort {
 
-    public static int[] sampleArray = new int[]{4, 1, 5, 2, 3};
+//    public static int[] sampleArray = new int[]{4, 1, 5, 2, 3};
+//    public static int[] sampleArray = new int[]{1,2,3,4,5};
+    public static int[] sampleArray = new int[]{5, 4, 3, 2, 1};
 
     public static void runSample() {
         QuickSort(sampleArray, 0, sampleArray.length - 1);
@@ -17,10 +19,9 @@ public class Quicksort {
         a[second] = temp;
     }
 
-    static int partition(int a[], int left, int right)
-    {
-        int i = left, j = right;
+    static int partition(int a[], int left, int right) {
         int pivot = a[left];
+        int i = left, j = right;
 
         while (i <= j) {
             while (a[i] < pivot) i++;
@@ -45,20 +46,24 @@ public class Quicksort {
         }
     }
 
-    /** ---------------- from CS-5549 Algorithm class ------------ */
+    /**
+     * ---------------- from CS-5549 Algorithm class ------------
+     */
 
-    static int Partition(int[] arr, int l, int h) {
+    static int Partition(int arr[], int l, int h) {
         int pivot = arr[l];
         int i = l, j = h;
-
         while (i < j) {
-            do {
+            System.out.println("i + +");
+            while (i <= h && arr[i] <= pivot) {
+                System.out.println("arr[" + i + "] = "+ arr[i]);
                 i++;
-            } while(arr[i] <= pivot);
-
-            do {
+            }
+            System.out.println("j + +");
+            while (j >=0 && arr[j] > pivot) {
+                System.out.println("arr[" + j + "] = "+ arr[i]);
                 j--;
-            } while (arr[j] > pivot);
+            }
 
             if (i < j) {
                 swap(arr, i, j);
@@ -69,12 +74,16 @@ public class Quicksort {
         return j;
     }
 
-    static void QuickSort(int[] a, int l, int h) {
-        if (l < h) {
-            int p = Partition(a, l, h);
+    static void QuickSort(int arr[], int l, int h) {
+        if (l >= h)
+            return;
 
-            QuickSort(a, l, p);
-            QuickSort(a, p + 1, h);
-        }
+        int j = Partition(arr, l, h);
+
+        // Sorting the left part
+        QuickSort(arr, l, j - 1);
+
+        // Sorting the right part
+        QuickSort(arr, j + 1, h);
     }
 }
