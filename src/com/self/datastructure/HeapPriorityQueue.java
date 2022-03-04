@@ -16,6 +16,12 @@ public class HeapPriorityQueue {
         }
     }
 
+    public static void buildHeap(List<Integer> a) {
+        for (int i = (a.size() - 1)/2; i >= 0; i--) {
+            heapify(a, a.size(), i);
+        }
+    }
+
     private static void heapify(List<Integer> a, int size, int i) {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
