@@ -1,12 +1,24 @@
 package com.self;
 
-import com.self.algorithms.sorting.MergeSort;
-import com.self.algorithms.sorting.Quicksort;
-import com.self.algorithms.sorting.Quicksort2;
+import com.self.algorithms.sorting.HeapPriorityQueue;
+import com.self.algorithms.sorting.HeapSort;
 
 public class Main {
 
     public static void main(String[] args) {
-        Quicksort.runSample();
+        var heap = HeapPriorityQueue.sampleHeap;
+
+        for (int i : heap) {
+            System.out.print(i + " ");
+        }
+
+        System.out.println("\nMax: " + HeapPriorityQueue.maximum(heap));
+//        System.out.println("\nExtract Max: " + HeapPriorityQueue.extractMax(heap));
+//        System.out.println("\nInsert 9: "); HeapPriorityQueue.insert(heap, 9);
+//        System.out.println("\nChange 2 to 9: "); HeapPriorityQueue.changeKey(heap, 3, 9);
+
+        for (int i : heap) {
+            System.out.print(i + " ");
+        }
     }
 }
