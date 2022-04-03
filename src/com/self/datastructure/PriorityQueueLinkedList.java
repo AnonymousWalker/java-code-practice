@@ -44,9 +44,11 @@ public class PriorityQueueLinkedList {
         }
 
         if (temp == null) {
+            // all items in list larger than new node
             previousTemp.next = newNode;
         } else {
             if (previousTemp == null) {
+                // temp doesn't move, insert new node before head
                 newNode.next = head;
                 head = newNode;
             } else {
@@ -57,10 +59,11 @@ public class PriorityQueueLinkedList {
     }
 
     public static void runSample() {
-        head = new Node(1,1);
+//        head = new Node(1,1);
+        push(4,4);
         push(3,3);
         push(2,2);
-        push(4,4);
+        push(1,1);
 
         Node temp = head;
         while (temp != null) {
