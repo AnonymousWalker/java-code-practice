@@ -1,10 +1,10 @@
 package com.self.graph;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DFSTraversal {
-    private LinkedList<Integer> adjList[];
+    private ArrayList<Integer> adjList[];
     private boolean[] visited;
 
     public void resetVisited() {
@@ -12,11 +12,11 @@ public class DFSTraversal {
     }
 
     DFSTraversal(int vSize) {
-        adjList = new LinkedList[vSize];
+        adjList = new ArrayList[vSize];
         visited = new boolean[vSize];
 
         for (int i = 0; i < vSize; i++) {
-            adjList[i] = new LinkedList();
+            adjList[i] = new ArrayList();
         }
     }
 
@@ -25,14 +25,17 @@ public class DFSTraversal {
     }
 
     public void DFS(int vertex) {
+        DFS(vertex, adjList);
+    }
+
+    public void DFS(int vertex, ArrayList<Integer> edges[]) {
         System.out.print(vertex + " ");
         visited[vertex] = true;
 
-        Iterator<Integer> it = adjList[vertex].listIterator();
-        while(it.hasNext()) {
-            int next = it.next();
-            if (!visited[next]) {
-                DFS(next);
+        for(int i = 0; i < edges[vertex].size(); i++) {
+            var u = edges[vertex].get(i);
+            if (!visited[u]) {
+                DFS(u);
             }
         }
     }
@@ -78,5 +81,7 @@ public class DFSTraversal {
         test.DFS(4);
         System.out.println();
         test.resetVisited();
+
+        test.isConnected();
     }
 }
